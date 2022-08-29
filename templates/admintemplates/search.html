@@ -1,0 +1,86 @@
+{% extends 'admintemplates/adminbase.html' %}
+{% load static %}
+
+{% block css_content %}
+<link rel="stylesheet" href="{% static '/adminstyles/edit.css' %}">
+{% endblock  %}
+
+{% block content  %}
+<nav class="navbar navbar-expand-lg mb-5">
+    <div class="container-fluid">
+      <a class="navbar-brand fs-3 fw-bold text-light" href="{% url 'index' %}">Admin</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active fs-5 ms-5 text-light" aria-current="page" href="{% url 'adaccount' %}">Create a new account</a>
+          </li>
+          
+          
+        </ul>
+        <form class="d-flex" role="search" method="POST">
+            {% csrf_token %}
+          <input class="form-control me-2" type="search" placeholder="Search" name = "search" aria-label="Search">
+          <button class="btn btn-outline-success btn btn-outline-light" type="submit">Search</button>
+        </form>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end ms-3">
+          <a href="{% url 'adsignout' %}">
+            <button class="btn btn-primary me-md-2" type="button">Logout</button>
+          </a>
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+
+
+  
+<table class="table">
+  <thead>
+   
+    <tr>
+      <th class="table-success" scope="col">id</th>
+      <th class="table-success" scope="col">Username</th>
+      <th class="table-success" scope="col">Email</th>
+      <th class="table-success" scope="col">Update</th>
+      <th class="table-success" scope="col">Delete </th>
+    </tr>
+  </thead>
+
+  
+  
+  <tbody>
+    {% for data in searchresult %}
+    <tr class="table-light">
+        <th scope="row">{{data.id}}</th>
+        <td >{{data.username}}</td>
+        <td>{{data.email}}</td>
+        <td>
+            <a href="{% url 'adupdate' data.id  %}">
+                <button class="btn btn-warning pe-3 ps-3 " type="submit">Update</button>
+              </a>
+        </td>
+        <td>
+            <a href="{% url 'addelete' data.id  %}">
+                <button class="btn btn-danger pe-3 ps-3 " type="submit">Delete</button>
+              </a>
+        </td>
+      
+      
+      
+    </tr>
+    {% endfor %}
+    
+  </tbody>
+{% comment %} </form> {% endcomment %}
+  
+
+
+</table>
+
+
+{% endblock  %}

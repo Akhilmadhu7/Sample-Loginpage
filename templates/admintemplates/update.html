@@ -1,0 +1,106 @@
+{% extends 'admintemplates/adminbase.html' %}
+{% load static %}
+
+{% block css_content %}
+<link rel="stylesheet" href="{% static '/adminstyles/edit.css' %}">
+{% endblock  %}
+
+{% block content  %}
+<nav class="navbar navbar-expand-lg mb-5">
+    <div class="container-fluid">
+      <a class="navbar-brand fs-3 fw-bold text-light" href="{% url 'index' %}">Admin</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active fs-5 ms-5 text-light" aria-current="page" href="{% url 'adaccount' %}">Create a new account</a>
+          </li>
+          
+          
+        </ul>
+        <form class="d-flex" role="search" method="POST">
+          <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
+          <a href="{% url 'usersearch' %}">
+            <button class="btn btn-outline-success btn btn-outline-light" type="submit">Search</button>
+          </a>
+        </form>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end ms-3">
+          <a href="{% url 'adsignout' %}">
+            <button class="btn btn-primary me-md-2" type="button">Logout</button>
+          </a>
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+
+
+  
+<table class="table">
+  <thead>
+    {% comment %} {% if messages %}
+     {% for msge in messages %}
+        <p class="text-success">{{msge}}</p>
+      {% endfor %}
+    {% endif %} {% endcomment %}
+    <tr>
+      <th class="table-success" scope="col">id</th>
+      <th class="table-success" scope="col">Username</th>
+      <th class="table-success" scope="col">Email</th>
+      <th class="table-success" scope="col">     </th>
+      <th class="table-success" scope="col">Delete</th>
+    </tr>
+  </thead>
+
+  
+  <form action="" method="POST">
+    {% csrf_token %}
+  <tbody>
+    
+    <tr class="table-light">
+      <th scope="row"></th>
+      <td >
+        <div>
+          <label for="uname"><strong>Username</strong></label>
+         <input type="text" placeholder="Enter Username"  value = "{{userdata.username}}" name="username" required>
+        </div>
+      </td>
+        {% comment %} </div> {% endcomment %}
+      <td>
+        <div>
+          <label for="uname"><strong>Password</strong></label>
+                    <input type="text" placeholder="Enter email" value = "{{userdata.email}}" name="email" required>
+        </div>
+      </td>
+      <td >
+        
+          <div>
+            <a href="{% url 'adupdate' userdata.id %}">
+              <button class="btn btn-warning pe-3 ps-3 mx-auto" type="submit">Save</button>
+            </a>
+          </div>
+      </td>     
+      <td>    
+          <div class="mx-auto">
+            <a href="{% url 'addelete' userdata.id  %}">
+              <button class="btn btn-danger pe-3 ps-3 " type="submit">Delete</button>
+            </a>
+          </div>
+        
+      </td> 
+      
+    </tr>
+    
+  </tbody>
+</form>
+  
+
+
+</table>
+
+
+{% endblock  %}

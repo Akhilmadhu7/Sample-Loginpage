@@ -1,0 +1,115 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    
+    
+}
+
+.form-top{
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+
+
+
+html, body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 15px;
+    background:#FBFBF9;
+    /* background:rgb(96, 255, 162); */
+    
+
+    
+    }
+    form {
+    border: 5px solid #f1f1f1;
+    }
+    /* input[type=text], input[type=password]  */
+    input{
+    width: 100%;
+    padding: 10px 8px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    }
+    button {
+    background-color: rgb(74, 231, 100); 
+    color: white;
+    padding: 14px 0;
+    margin: 10px 0;
+    border: none;
+    cursor: grabbing;
+    width: 100%;
+    border-radius: 10px;
+    }
+    h1 {
+    text-align:center;
+    font-size:18;
+    }
+    button:hover {
+    opacity: 0.8;
+    }
+    .formcontainer {
+    text-align: left;
+    margin: 24px 50px 12px;
+    }
+    
+    span.psw {
+    float: right;
+    padding-top: 0;
+    padding-right: 15px;
+    }
+    /* Change styles for span on extra small screens */
+    @media screen and (max-width: 300px) {
+    span.psw {
+    display: block;
+    float: none;
+    }
+}
+
+
+/* HEAD STYLES */
+
+.form-head1{
+    width: 100%;
+    height: 70px;
+    text-align: center;
+    color: white;
+    font-size: x-large;
+    font-family: Roboto, Arial, sans-serif;
+    /* background-color: rgb(103, 247, 127); */
+    
+}
+
+.form-head1 h3{
+    padding-top: 15px;
+}
+
+
+/* aldready have an account styles */
+
+.signin{
+    height: 60px;
+    background-color: rgb(74, 231, 100);
+}
+
+.signin p{
+    color: rgb(255, 255, 255);
+    padding-top: 20px;
+}
+
+.signin a{
+    text-decoration: none;
+
+}
+
+#error style
+
+.colors h6{
+    color:red
+}

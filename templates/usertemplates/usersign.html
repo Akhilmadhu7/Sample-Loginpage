@@ -1,0 +1,82 @@
+{% extends 'usertemplates/theme.html' %}
+
+{% load static %}
+
+
+
+{% block title %}
+Signup Page
+
+{% endblock  %}
+{% block css_content  %}
+<link rel="stylesheet" href="{% static '/userstyles/usersign.css %}">
+
+{% endblock  %}
+
+{% block content  %}
+
+
+
+{% comment %} <div class="container"> {% endcomment %}
+    {% comment %} <div class="row"> {% endcomment %}
+        {% comment %} <div class="col-md-7 mx-auto"> {% endcomment %}
+            <div class="form-head1 bg-success ">
+                <h3> WELCOME TO SIGN UP PAGE</h3>
+             </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-7 mx-auto bg-light">
+            <form class="form-top" action=  "" method="POST">
+                {% csrf_token %}
+                <h3 class="text-center pt-2">Create your account</h3>
+                <div class="formcontainer">
+                <hr>
+                <div> 
+                    
+                    {% for message in messages %}
+                    <h6 class="text-danger" >{{message}}</h6>
+                    {% endfor %} 
+                    <label for="uname"><strong>Username</strong></label>
+                    <input type="text" placeholder="Enter Username" name="username" required>
+                    
+        
+                    <label for="psw"><strong>Email</strong></label>
+                    <input type="email" placeholder="Enter Email" name="email" required>
+                    
+                    
+                    <label for="psw"><strong>Password</strong></label>
+                    <input type="password" placeholder="Enter Password" name="password1" required>
+                    
+        
+                    <label for="psw"><strong>Confirm Password</strong></label>
+                    <input type="password" placeholder="Enter Password" name="password2" required>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit mx-auto" style="width: 25%;">Sign Up</button>
+                </div>
+                
+                {% comment %} {% for message in messages %}
+                <h6 class="colors" style : "color:red;">{{message}}</h6>
+                {% endfor %}  {% endcomment %}
+                </form>
+            
+                <div>
+                    <div class='signin text-center mt-3 '>
+                    <div class="signin-p mt-2">
+                        <P >Already have an account? 
+                            <a class="text-light fw-semibold" href="{% url 'userlogin' %}">Login here </a>
+                        </P>
+                    </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock  %}
